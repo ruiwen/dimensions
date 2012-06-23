@@ -10,6 +10,9 @@
 
 @implementation DMViewController
 
+@synthesize lines;
+@synthesize horizontalLine;
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -22,6 +25,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+	
+	self.lines = [[NSMutableArray alloc] init];
 }
 
 - (void)viewDidUnload
@@ -55,6 +60,42 @@
 {
     // Return YES for supported orientations
 	return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+}
+
+- (IBAction)downSwipe:(UITapGestureRecognizer *)recognizer {
+	NSLog(@"downSwipe");
+}
+- (IBAction)rightSwipe:(UITapGestureRecognizer *)recognizer {
+	NSLog(@"rightSwipe");
+}
+
+
+- (IBAction)downPan:(UIPanGestureRecognizer *)press {
+	
+	NSLog(@"Panning: %@", press);
+	
+	if(press.state == UIGestureRecognizerStateBegan) {
+		NSLog(@"longPress: %@", press);
+		NSLog(@"Coordinate X:%f, Y:%f", [press locationInView:self.view].x, [press locationInView:self.view].y);
+		
+		[[NSBundle mainBundle] loadNibNamed:@"HorizontalLineView" owner:self options:nil];
+		
+		[self.view addSubview:self.horizontalLine]; // Add horizontalLine view as subview first, so it can retrieve touch coordinates with respect to our main view
+		[self.horizontalLine updateLocation:[press locationInView:self.view].y];
+		[self.lines addObject:self.horizontalLine];
+		
+		//self.horizontalLine = nil;
+		
+	}
+	else if (press.state == UIGestureRecognizerStateChanged) {
+		
+		[self.horizontalLine updateLocation:[press locationInView:self.view].y];
+	}
+	
+	else if(press.state == UIGestureRecognizerStateEnded) {
+	
+		self.horizontalLine = nil; // Nullify
+	}
 }
 
 @end
