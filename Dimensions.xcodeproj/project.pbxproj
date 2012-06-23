@@ -20,6 +20,8 @@
 		E2A6DBB7158E1324005474AD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2A6DB98158E1323005474AD /* Foundation.framework */; };
 		E2A6DBBF158E1324005474AD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E2A6DBBD158E1324005474AD /* InfoPlist.strings */; };
 		E2A6DBC2158E1324005474AD /* DimensionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A6DBC1158E1324005474AD /* DimensionsTests.m */; };
+		E2A6DBDA158E2381005474AD /* HorizontalLine.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A6DBD9158E2381005474AD /* HorizontalLine.m */; };
+		E2A6DBDC158E23A6005474AD /* HorizontalLineView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2A6DBDB158E23A6005474AD /* HorizontalLineView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,9 @@
 		E2A6DBBE158E1324005474AD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E2A6DBC0158E1324005474AD /* DimensionsTests.h */ = {isa = PBXFileReference; path = DimensionsTests.h; sourceTree = "<group>"; };
 		E2A6DBC1158E1324005474AD /* DimensionsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DimensionsTests.m; sourceTree = "<group>"; };
+		E2A6DBD8158E2381005474AD /* HorizontalLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HorizontalLine.h; sourceTree = "<group>"; };
+		E2A6DBD9158E2381005474AD /* HorizontalLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HorizontalLine.m; sourceTree = "<group>"; };
+		E2A6DBDB158E23A6005474AD /* HorizontalLineView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HorizontalLineView.xib; path = Views/HorizontalLineView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,12 +116,15 @@
 		E2A6DB9C158E1323005474AD /* Dimensions */ = {
 			isa = PBXGroup;
 			children = (
+				E2A6DBD8158E2381005474AD /* HorizontalLine.h */,
+				E2A6DBD9158E2381005474AD /* HorizontalLine.m */,
 				E2A6DBA5158E1323005474AD /* DMAppDelegate.h */,
 				E2A6DBA6158E1323005474AD /* DMAppDelegate.m */,
 				E2A6DBA8158E1324005474AD /* MainStoryboard.storyboard */,
 				E2A6DBAB158E1324005474AD /* DMViewController.h */,
 				E2A6DBAC158E1324005474AD /* DMViewController.m */,
 				E2A6DB9D158E1323005474AD /* Supporting Files */,
+				E2A6DBD4158E22C9005474AD /* Views */,
 			);
 			path = Dimensions;
 			sourceTree = "<group>";
@@ -149,6 +157,14 @@
 				E2A6DBBD158E1324005474AD /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E2A6DBD4158E22C9005474AD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E2A6DBDB158E23A6005474AD /* HorizontalLineView.xib */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,6 +239,7 @@
 			files = (
 				E2A6DBA1158E1323005474AD /* InfoPlist.strings in Resources */,
 				E2A6DBAA158E1324005474AD /* MainStoryboard.storyboard in Resources */,
+				E2A6DBDC158E23A6005474AD /* HorizontalLineView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +277,7 @@
 				E2A6DBA3158E1323005474AD /* main.m in Sources */,
 				E2A6DBA7158E1323005474AD /* DMAppDelegate.m in Sources */,
 				E2A6DBAD158E1324005474AD /* DMViewController.m in Sources */,
+				E2A6DBDA158E2381005474AD /* HorizontalLine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
