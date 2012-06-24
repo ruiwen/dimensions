@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E22F548015961F7700EDE57A /* RCDirectionalPanGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = E22F547F15961F7700EDE57A /* RCDirectionalPanGestureRecognizer.m */; };
 		E2A6DB97158E1323005474AD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2A6DB96158E1323005474AD /* UIKit.framework */; };
 		E2A6DB99158E1323005474AD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2A6DB98158E1323005474AD /* Foundation.framework */; };
 		E2A6DB9B158E1323005474AD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2A6DB9A158E1323005474AD /* CoreGraphics.framework */; };
@@ -35,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E22F547E15961F7700EDE57A /* RCDirectionalPanGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; name = RCDirectionalPanGestureRecognizer.h; path = Libraries/GestureRecognizers/RCDirectionalPanGestureRecognizer.h; sourceTree = "<group>"; };
+		E22F547F15961F7700EDE57A /* RCDirectionalPanGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCDirectionalPanGestureRecognizer.m; path = Libraries/GestureRecognizers/RCDirectionalPanGestureRecognizer.m; sourceTree = "<group>"; };
 		E2A6DB92158E1323005474AD /* Dimensions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dimensions.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2A6DB96158E1323005474AD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E2A6DB98158E1323005474AD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -83,6 +86,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E22F548215961F8300EDE57A /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				E22F548315961F9600EDE57A /* GestureRecognizers */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		E22F548315961F9600EDE57A /* GestureRecognizers */ = {
+			isa = PBXGroup;
+			children = (
+				E22F547E15961F7700EDE57A /* RCDirectionalPanGestureRecognizer.h */,
+				E22F547F15961F7700EDE57A /* RCDirectionalPanGestureRecognizer.m */,
+			);
+			name = GestureRecognizers;
+			sourceTree = "<group>";
+		};
 		E2A6DB87158E1323005474AD = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +145,7 @@
 				E2A6DBAC158E1324005474AD /* DMViewController.m */,
 				E2A6DB9D158E1323005474AD /* Supporting Files */,
 				E2A6DBD4158E22C9005474AD /* Views */,
+				E22F548215961F8300EDE57A /* Libraries */,
 			);
 			path = Dimensions;
 			sourceTree = "<group>";
@@ -278,6 +299,7 @@
 				E2A6DBA7158E1323005474AD /* DMAppDelegate.m in Sources */,
 				E2A6DBAD158E1324005474AD /* DMViewController.m in Sources */,
 				E2A6DBDA158E2381005474AD /* HorizontalLine.m in Sources */,
+				E22F548015961F7700EDE57A /* RCDirectionalPanGestureRecognizer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
