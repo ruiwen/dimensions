@@ -212,30 +212,43 @@
 					<string key="className">DMViewController</string>
 					<string key="superclassName">UIViewController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="downPan:">UIPanGestureRecognizer</string>
-						<string key="longPress:">UILongPressGestureRecognizer</string>
+						<string key="horizontalPan:">RCDirectionalPanGestureRecognizer</string>
+						<string key="verticalPan:">RCDirectionalPanGestureRecognizer</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="downPan:">
-							<string key="name">downPan:</string>
-							<string key="candidateClassName">UIPanGestureRecognizer</string>
+						<object class="IBActionInfo" key="horizontalPan:">
+							<string key="name">horizontalPan:</string>
+							<string key="candidateClassName">RCDirectionalPanGestureRecognizer</string>
 						</object>
-						<object class="IBActionInfo" key="longPress:">
-							<string key="name">longPress:</string>
-							<string key="candidateClassName">UILongPressGestureRecognizer</string>
+						<object class="IBActionInfo" key="verticalPan:">
+							<string key="name">verticalPan:</string>
+							<string key="candidateClassName">RCDirectionalPanGestureRecognizer</string>
 						</object>
 					</dictionary>
-					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">horizontalLine</string>
-						<string key="NS.object.0">HorizontalLine</string>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">horizontalLine</string>
-						<object class="IBToOneOutletInfo" key="NS.object.0">
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="horizontalLine">HorizontalLine</string>
+						<string key="horizontalPan">RCDirectionalPanGestureRecognizer</string>
+						<string key="verticalLine">VerticalLine</string>
+						<string key="verticalPan">RCDirectionalPanGestureRecognizer</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="horizontalLine">
 							<string key="name">horizontalLine</string>
 							<string key="candidateClassName">HorizontalLine</string>
 						</object>
-					</object>
+						<object class="IBToOneOutletInfo" key="horizontalPan">
+							<string key="name">horizontalPan</string>
+							<string key="candidateClassName">RCDirectionalPanGestureRecognizer</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="verticalLine">
+							<string key="name">verticalLine</string>
+							<string key="candidateClassName">VerticalLine</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="verticalPan">
+							<string key="name">verticalPan</string>
+							<string key="candidateClassName">RCDirectionalPanGestureRecognizer</string>
+						</object>
+					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/DMViewController.h</string>
@@ -261,6 +274,14 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/HorizontalLine.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">RCDirectionalPanGestureRecognizer</string>
+					<string key="superclassName">UIPanGestureRecognizer</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/RCDirectionalPanGestureRecognizer.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">

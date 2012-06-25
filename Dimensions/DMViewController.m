@@ -9,9 +9,12 @@
 #import "DMViewController.h"
 
 @implementation DMViewController
+@synthesize horizontalPan;
+@synthesize verticalPan;
 
 @synthesize lines;
 @synthesize horizontalLine;
+@synthesize verticalLine;
 
 - (void)didReceiveMemoryWarning
 {
@@ -26,11 +29,18 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 	
+	self.horizontalPan.direction = RCPanGestureRecognizerHorizontal;
+	self.verticalPan.direction = RCPanGestureRecognizerVertical;
+	
 	self.lines = [[NSMutableArray alloc] init];
 }
 
 - (void)viewDidUnload
 {
+	[self setHorizontalPan:nil];
+	[self setVerticalPan:nil];
+	[self setHorizontalLine:nil];
+	[self setVerticalLine:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -62,26 +72,48 @@
 	return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
-- (IBAction)downSwipe:(UITapGestureRecognizer *)recognizer {
-	NSLog(@"downSwipe");
-}
-- (IBAction)rightSwipe:(UITapGestureRecognizer *)recognizer {
-	NSLog(@"rightSwipe");
-}
+- (IBAction)horizontalPan:(RCDirectionalPanGestureRecognizer *)press {
 
-
-- (IBAction)downPan:(UIPanGestureRecognizer *)press {
-	
-	NSLog(@"Panning: %@", press);
+	NSLog(@"Horizontal Pan: %@", press);
 	
 	if(press.state == UIGestureRecognizerStateBegan) {
-		NSLog(@"longPress: %@", press);
+		NSLog(@"Coordinate X:%f, Y:%f", [press locationInView:self.view].x, [press locationInView:self.view].y);
+		
+		[[NSBundle mainBundle] loadNibNamed:@"VerticalLineView" owner:self options:nil];
+		
+		[self.view addSubview:self.verticalLine]; // Add verticalLine view as subview first, so it can retrieve touch coordinates with respect to our main view
+		[self.verticalLine setConstraint:DMLineConstrainX];
+		[self.verticalLine updateLocation:[press locationInView:self.view]];
+		[self.lines addObject:self.verticalLine];
+		
+		//self.horizontalLine = nil;
+		
+	}
+	else if (press.state == UIGestureRecognizerStateChanged) {
+		
+		[self.verticalLine updateLocation:[press locationInView:self.view]];
+	}
+	
+	else if(press.state == UIGestureRecognizerStateEnded) {
+		
+		self.verticalLine = nil; // Nullify
+	}
+	
+}
+
+
+- (IBAction)verticalPan:(RCDirectionalPanGestureRecognizer *)press {
+	
+	NSLog(@"Vertical Pan: %@", press);
+	
+	if(press.state == UIGestureRecognizerStateBegan) {
 		NSLog(@"Coordinate X:%f, Y:%f", [press locationInView:self.view].x, [press locationInView:self.view].y);
 		
 		[[NSBundle mainBundle] loadNibNamed:@"HorizontalLineView" owner:self options:nil];
 		
 		[self.view addSubview:self.horizontalLine]; // Add horizontalLine view as subview first, so it can retrieve touch coordinates with respect to our main view
-		[self.horizontalLine updateLocation:[press locationInView:self.view].y];
+		[self.horizontalLine setConstraint:DMLineConstrainY];
+		[self.horizontalLine updateLocation:[press locationInView:self.view]];
 		[self.lines addObject:self.horizontalLine];
 		
 		//self.horizontalLine = nil;
@@ -89,7 +121,7 @@
 	}
 	else if (press.state == UIGestureRecognizerStateChanged) {
 		
-		[self.horizontalLine updateLocation:[press locationInView:self.view].y];
+		[self.horizontalLine updateLocation:[press locationInView:self.view]];
 	}
 	
 	else if(press.state == UIGestureRecognizerStateEnded) {

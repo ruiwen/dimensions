@@ -44,15 +44,26 @@
                         <gestureRecognizers/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="rT8-SR-6FZ" appends="YES" id="XcI-qT-WzY"/>
+                            <outletCollection property="gestureRecognizers" destination="Dd9-Ic-1M6" appends="YES" id="Sfn-eV-kRU"/>
                         </connections>
                     </view>
-                </viewController>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="rT8-SR-6FZ" userLabel="downPan">
                     <connections>
-                        <action selector="downPan:" destination="2" id="z60-ip-7MR"/>
+                        <outlet property="horizontalPan" destination="rT8-SR-6FZ" id="YFK-DK-Wci"/>
+                        <outlet property="verticalPan" destination="Dd9-Ic-1M6" id="rpW-Id-tUD"/>
+                    </connections>
+                </viewController>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="rT8-SR-6FZ" userLabel="horizontalPan" customClass="RCDirectionalPanGestureRecognizer">
+                    <connections>
+                        <action selector="horizontalPan:" destination="2" id="Ve2-lp-c0s"/>
+                    </connections>
+                </panGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="Dd9-Ic-1M6" userLabel="verticalPan" customClass="RCDirectionalPanGestureRecognizer">
+                    <connections>
+                        <action selector="verticalPan:" destination="2" id="ng0-oH-wx2"/>
                     </connections>
                 </panGestureRecognizer>
             </objects>
+            <point key="canvasLocation" x="-185" y="-91"/>
         </scene>
     </scenes>
     <classes>
@@ -66,13 +77,26 @@
         <class className="DMViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DMViewController.h"/>
             <relationships>
-                <relationship kind="action" name="downPan:" candidateClass="UIPanGestureRecognizer"/>
-                <relationship kind="action" name="longPress:" candidateClass="UILongPressGestureRecognizer"/>
+                <relationship kind="action" name="horizontalPan:" candidateClass="RCDirectionalPanGestureRecognizer"/>
+                <relationship kind="action" name="verticalPan:" candidateClass="RCDirectionalPanGestureRecognizer"/>
                 <relationship kind="outlet" name="horizontalLine" candidateClass="HorizontalLine"/>
+                <relationship kind="outlet" name="horizontalPan" candidateClass="RCDirectionalPanGestureRecognizer"/>
+                <relationship kind="outlet" name="verticalLine" candidateClass="VerticalLine"/>
+                <relationship kind="outlet" name="verticalPan" candidateClass="RCDirectionalPanGestureRecognizer"/>
             </relationships>
         </class>
         <class className="HorizontalLine" superclassName="DMLine">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HorizontalLine.h"/>
+            <relationships>
+                <relationship kind="outlet" name="label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="line" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="RCDirectionalPanGestureRecognizer" superclassName="UIPanGestureRecognizer">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RCDirectionalPanGestureRecognizer.h"/>
+        </class>
+        <class className="VerticalLine" superclassName="DMLine">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VerticalLine.h"/>
             <relationships>
                 <relationship kind="outlet" name="label" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="line" candidateClass="UIView"/>

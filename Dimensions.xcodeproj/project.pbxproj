@@ -39,7 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E22F547E15961F7700EDE57A /* RCDirectionalPanGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; name = RCDirectionalPanGestureRecognizer.h; path = Libraries/GestureRecognizers/RCDirectionalPanGestureRecognizer.h; sourceTree = "<group>"; };
+		E22F547E15961F7700EDE57A /* RCDirectionalPanGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCDirectionalPanGestureRecognizer.h; path = Libraries/GestureRecognizers/RCDirectionalPanGestureRecognizer.h; sourceTree = "<group>"; };
 		E22F547F15961F7700EDE57A /* RCDirectionalPanGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCDirectionalPanGestureRecognizer.m; path = Libraries/GestureRecognizers/RCDirectionalPanGestureRecognizer.m; sourceTree = "<group>"; };
 		E22F54841596D77100EDE57A /* VerticalLineView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VerticalLineView.xib; path = Views/VerticalLineView.xib; sourceTree = "<group>"; };
 		E22F54861596DAFE00EDE57A /* VerticalLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerticalLine.h; sourceTree = "<group>"; };
