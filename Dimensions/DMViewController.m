@@ -8,19 +8,143 @@
 
 #import "DMViewController.h"
 
+
+@interface DMViewController () 
+
+@property (strong, nonatomic) UIActionSheet *as;
+
+@property (strong , nonatomic) NSDictionary *mediaInfo;
+
+- (void)captureImageWithSource:(UIImagePickerControllerSourceType)source;
+- (void)showCaptureActionSheet;
+- (void)showIU:(BOOL)show;
+
+@end
+
+
 @implementation DMViewController
+
+@synthesize as;
+@synthesize mediaInfo;
+
 @synthesize horizontalPan;
 @synthesize verticalPan;
 
 @synthesize lines;
 @synthesize horizontalLine;
 @synthesize verticalLine;
+@synthesize chooseButton;
+@synthesize imageView;
+@synthesize controls;
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Release any cached data, images, etc that aren't in use.
 }
+
+#pragma mark - UIActionSheetDelegate methods
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
+	
+	NSString *action = [as buttonTitleAtIndex:buttonIndex];
+	
+	if(action == @"Camera"){
+		// Activate the camera
+		[self captureImageWithSource:UIImagePickerControllerSourceTypeCamera];
+	}
+	else if (action == @"Photo Library"){
+		// Show the photo library
+		[self captureImageWithSource:UIImagePickerControllerSourceTypeSavedPhotosAlbum];
+	} 
+}
+
+#pragma mark - Utility methods
+
+- (void)captureImageWithSource:(UIImagePickerControllerSourceType)source {
+	
+	// Create image picker controller
+	UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+	
+	// Set source to the camera
+	imagePicker.sourceType = source;
+	
+	//Default using the front camera
+	//imagePicker.cameraDevice = UIImagePickerControllerCameraDeviceBack;
+	
+	// Delegate is self
+	imagePicker.delegate = self;
+	
+	// Show image picker
+	[self presentModalViewController:imagePicker animated:YES];
+	
+}
+
+- (void)showCaptureActionSheet {
+	// Describe the UIActionSheet
+	as = [[UIActionSheet alloc] initWithTitle:@"Select image" 
+									 delegate:self 
+							cancelButtonTitle:nil 
+					   destructiveButtonTitle:nil 
+							otherButtonTitles:nil];
+	
+	// Let's see what options we have
+	if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+		[as addButtonWithTitle:@"Camera"];
+	}
+	if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum]) {
+		[as addButtonWithTitle:@"Photo Library"];
+	}
+	
+	// Manually add the Cancel button, instead of using the initializer above
+	as.cancelButtonIndex = [as addButtonWithTitle:@"Cancel"];
+	
+	as.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+	[as showInView:self.view];
+	//[as showFromTabBar:self.tabBarController.tabBar]; // Show the ActionSheet
+}
+
+- (IBAction)takeAction:(id)sender {
+	[self showCaptureActionSheet];
+}
+
+- (void)showIU:(BOOL)show {
+
+	[[UIApplication sharedApplication] setStatusBarHidden:(!show) withAnimation:UIStatusBarAnimationSlide];
+	
+	[self.controls setHidden:(!show)];
+
+}
+
+#pragma mark - UIImagePickerController Delegate
+// Image picker delegate
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+	
+	// Assign to controller variable
+	self.mediaInfo = info;
+	NSLog(@"Media info: %@", self.mediaInfo);
+	
+	// Code here to work with media
+	UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+	
+	//Set taken image to the image from the picker
+	[self.imageView setImage:image];
+	
+	//Need to dismiss camera picker with NO animation to be able to segue to the next controller
+	[self dismissModalViewControllerAnimated:NO];
+	//Need to save to local app a copy of the image.
+	//	[self performSegueWithIdentifier:@"FeaturedToCreateOwnPose" sender:self];
+	
+	// Hide the UI
+	[self showIU:NO];
+}
+
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+	[self dismissModalViewControllerAnimated:YES];
+}
+
+
 
 #pragma mark - View lifecycle
 
@@ -41,6 +165,9 @@
 	[self setVerticalPan:nil];
 	[self setHorizontalLine:nil];
 	[self setVerticalLine:nil];
+	[self setChooseButton:nil];
+	[self setImageView:nil];
+	[self setControls:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -128,6 +255,10 @@
 	
 		self.horizontalLine = nil; // Nullify
 	}
+}
+
+- (IBAction)chooseButton:(id)sender {
+	[self takeAction:sender];
 }
 
 @end

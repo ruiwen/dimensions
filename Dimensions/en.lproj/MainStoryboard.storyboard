@@ -8,36 +8,40 @@
         <scene sceneID="5">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
-                <viewController id="2" customClass="DMViewController" sceneMemberID="viewController">
+                <viewController wantsFullScreenLayout="YES" id="2" customClass="DMViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="o5i-eu-a1T" userLabel="imageView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                             </imageView>
                             <view contentMode="scaleToFill" id="3f8-Pi-VsE">
-                                <rect key="frame" x="0.0" y="416" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="436" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" alpha="0.70000000000000007" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1SF-4v-icv">
-                                        <rect key="frame" x="120" y="3" width="80" height="37"/>
+                                    <button opaque="NO" alpha="0.70000000000000007" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1SF-4v-icv">
+                                        <rect key="frame" x="0.0" y="3" width="80" height="37"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="Choose">
-                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <size key="titleShadowOffset" width="0.0" height="1"/>
+                                        <state key="normal" title="CHOOSE">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="chooseButton:" destination="2" eventType="touchUpInside" id="Vlm-MJ-8iQ"/>
+                                        </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.31074290960774709" blue="0.063802923230915964" alpha="0.080000000000000002" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0072727272727273196" green="0.0022599484335109024" blue="0.00046402125986120998" alpha="0.70000000000000007" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.78181818181818186" green="0.78181818181818186" blue="0.78181818181818186" alpha="1" colorSpace="calibratedRGB"/>
@@ -47,8 +51,12 @@
                             <outletCollection property="gestureRecognizers" destination="Dd9-Ic-1M6" appends="YES" id="Sfn-eV-kRU"/>
                         </connections>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="chooseButton" destination="1SF-4v-icv" id="ZEK-SZ-C90"/>
+                        <outlet property="controls" destination="3f8-Pi-VsE" id="Fhd-Rb-oPr"/>
                         <outlet property="horizontalPan" destination="rT8-SR-6FZ" id="YFK-DK-Wci"/>
+                        <outlet property="imageView" destination="o5i-eu-a1T" id="Hss-wt-osT"/>
                         <outlet property="verticalPan" destination="Dd9-Ic-1M6" id="rpW-Id-tUD"/>
                     </connections>
                 </viewController>
@@ -77,10 +85,14 @@
         <class className="DMViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DMViewController.h"/>
             <relationships>
+                <relationship kind="action" name="chooseButton:"/>
                 <relationship kind="action" name="horizontalPan:" candidateClass="RCDirectionalPanGestureRecognizer"/>
                 <relationship kind="action" name="verticalPan:" candidateClass="RCDirectionalPanGestureRecognizer"/>
+                <relationship kind="outlet" name="chooseButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="controls" candidateClass="UIView"/>
                 <relationship kind="outlet" name="horizontalLine" candidateClass="HorizontalLine"/>
                 <relationship kind="outlet" name="horizontalPan" candidateClass="RCDirectionalPanGestureRecognizer"/>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="verticalLine" candidateClass="VerticalLine"/>
                 <relationship kind="outlet" name="verticalPan" candidateClass="RCDirectionalPanGestureRecognizer"/>
             </relationships>
