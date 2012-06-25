@@ -56,6 +56,13 @@
         </scene>
     </scenes>
     <classes>
+        <class className="DMLine" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DMLine.h"/>
+            <relationships>
+                <relationship kind="outlet" name="label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="line" candidateClass="UIView"/>
+            </relationships>
+        </class>
         <class className="DMViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DMViewController.h"/>
             <relationships>
@@ -64,7 +71,7 @@
                 <relationship kind="outlet" name="horizontalLine" candidateClass="HorizontalLine"/>
             </relationships>
         </class>
-        <class className="HorizontalLine" superclassName="UIView">
+        <class className="HorizontalLine" superclassName="DMLine">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HorizontalLine.h"/>
             <relationships>
                 <relationship kind="outlet" name="label" candidateClass="UILabel"/>

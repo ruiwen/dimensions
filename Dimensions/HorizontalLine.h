@@ -7,12 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DMLine.h"
 
-@interface HorizontalLine : UIView
+@interface HorizontalLine : DMLine
+
 @property (strong, nonatomic) IBOutlet UIView *line;
 @property (strong, nonatomic) IBOutlet UILabel *label;
-
-- (void)withGesture:(UIGestureRecognizer *)press;
-- (void)updateLocation:(float)y;
 
 @end

@@ -30,14 +30,6 @@
 }
 */
 
-- (void)updateLocation:(float)y {
-	
-	CGRect frame = self.frame;
-	frame.origin.y = y - frame.size.height;
-	[self setFrame:frame];
-	
-	[self.label setText:[NSString stringWithFormat:@"%3.0f", y]];
-}
 
 //- (void)withGesture:(UIGestureRecognizer *)press {
 //
