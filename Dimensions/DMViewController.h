@@ -27,5 +27,7 @@
 - (IBAction)horizontalPan:(RCDirectionalPanGestureRecognizer *)press;
 - (IBAction)verticalPan:(RCDirectionalPanGestureRecognizer *)press;
 - (IBAction)chooseButton:(id)sender;
+- (IBAction)clearLines:(id)sender;
+
 
 @end

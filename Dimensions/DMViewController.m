@@ -261,4 +261,11 @@
 	[self takeAction:sender];
 }
 
+- (IBAction)clearLines:(id)sender {
+	
+	// Kill _ALL_ the lines!
+	[self.lines makeObjectsPerformSelector:@selector(removeFromSuperview)];	
+	[self.lines removeAllObjects];
+}
+
 @end
