@@ -7,7 +7,7 @@
 //
 
 #import "DMViewController.h"
-
+#import <QuartzCore/QuartzCore.h>
 
 @interface DMViewController () 
 
@@ -29,6 +29,9 @@
 
 @synthesize horizontalPan;
 @synthesize verticalPan;
+@synthesize tapGesture;
+
+@synthesize uiShowing;
 
 @synthesize lines;
 @synthesize horizontalLine;
@@ -108,11 +111,28 @@
 }
 
 - (void)showIU:(BOOL)show {
-
-	[[UIApplication sharedApplication] setStatusBarHidden:(!show) withAnimation:UIStatusBarAnimationSlide];
 	
-	[self.controls setHidden:(!show)];
+	// Don't do anything if there's no image showing
+	if(!show && !imageView.image ) { return; }
+	
+	// Get the frame for the control bar
+	CGRect frame = self.controls.frame;
+	frame.origin.y = (show) ? 436 : 480;
+	
+	// Set its z-index to the top
+	[self.view bringSubviewToFront:self.controls];
+	
+	[UIView animateWithDuration:0.4
+						  delay:0.0
+						options: UIViewAnimationOptionCurveEaseIn
+					 animations:^{
+						 self.controls.frame = frame;
+					 } completion:^(BOOL finished) {
+						 NSLog(@"Done hiding");
+					 }];
 
+	// Toggle the flag
+	self.uiShowing = !self.uiShowing;
 }
 
 #pragma mark - UIImagePickerController Delegate
@@ -155,6 +175,8 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 	
+	self.uiShowing = YES;
+	
 	self.horizontalPan.direction = RCPanGestureRecognizerHorizontal;
 	self.verticalPan.direction = RCPanGestureRecognizerVertical;
 	
@@ -170,6 +192,7 @@
 	[self setChooseButton:nil];
 	[self setImageView:nil];
 	[self setControls:nil];
+	[self setTapGesture:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -268,6 +291,11 @@
 	// Kill _ALL_ the lines!
 	[self.lines makeObjectsPerformSelector:@selector(removeFromSuperview)];	
 	[self.lines removeAllObjects];
+}
+
+- (IBAction)tapGesture:(id)sender {
+	
+	[self showIU:!self.uiShowing];
 }
 
 @end

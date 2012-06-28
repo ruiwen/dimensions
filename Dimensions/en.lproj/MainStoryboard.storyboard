@@ -65,14 +65,17 @@
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="rT8-SR-6FZ" appends="YES" id="XcI-qT-WzY"/>
                             <outletCollection property="gestureRecognizers" destination="Dd9-Ic-1M6" appends="YES" id="Sfn-eV-kRU"/>
+                            <outletCollection property="gestureRecognizers" destination="CBm-6h-YtI" appends="YES" id="XdO-hl-iW4"/>
                         </connections>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="chooseButton" destination="1SF-4v-icv" id="ZEK-SZ-C90"/>
                         <outlet property="controls" destination="3f8-Pi-VsE" id="Fhd-Rb-oPr"/>
                         <outlet property="horizontalPan" destination="rT8-SR-6FZ" id="YFK-DK-Wci"/>
                         <outlet property="imageView" destination="o5i-eu-a1T" id="Hss-wt-osT"/>
+                        <outlet property="tapGesture" destination="CBm-6h-YtI" id="gsY-LE-uHh"/>
                         <outlet property="verticalPan" destination="Dd9-Ic-1M6" id="rpW-Id-tUD"/>
                     </connections>
                 </viewController>
@@ -86,6 +89,11 @@
                         <action selector="verticalPan:" destination="2" id="ng0-oH-wx2"/>
                     </connections>
                 </panGestureRecognizer>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="CBm-6h-YtI" userLabel="tapGesture">
+                    <connections>
+                        <action selector="tapGesture:" destination="2" id="zAh-tQ-cDH"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-185" y="-91"/>
         </scene>
@@ -102,13 +110,16 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DMViewController.h"/>
             <relationships>
                 <relationship kind="action" name="chooseButton:"/>
+                <relationship kind="action" name="clearLines:"/>
                 <relationship kind="action" name="horizontalPan:" candidateClass="RCDirectionalPanGestureRecognizer"/>
+                <relationship kind="action" name="tapGesture:"/>
                 <relationship kind="action" name="verticalPan:" candidateClass="RCDirectionalPanGestureRecognizer"/>
                 <relationship kind="outlet" name="chooseButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="controls" candidateClass="UIView"/>
                 <relationship kind="outlet" name="horizontalLine" candidateClass="HorizontalLine"/>
                 <relationship kind="outlet" name="horizontalPan" candidateClass="RCDirectionalPanGestureRecognizer"/>
                 <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="tapGesture" candidateClass="UITapGestureRecognizer"/>
                 <relationship kind="outlet" name="verticalLine" candidateClass="VerticalLine"/>
                 <relationship kind="outlet" name="verticalPan" candidateClass="RCDirectionalPanGestureRecognizer"/>
             </relationships>

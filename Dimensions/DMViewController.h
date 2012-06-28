@@ -23,11 +23,15 @@
 
 @property (strong, nonatomic) IBOutlet RCDirectionalPanGestureRecognizer *horizontalPan;
 @property (strong, nonatomic) IBOutlet RCDirectionalPanGestureRecognizer *verticalPan;
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapGesture;
+
+@property BOOL uiShowing;
 
 - (IBAction)horizontalPan:(RCDirectionalPanGestureRecognizer *)press;
 - (IBAction)verticalPan:(RCDirectionalPanGestureRecognizer *)press;
 - (IBAction)chooseButton:(id)sender;
 - (IBAction)clearLines:(id)sender;
+- (IBAction)tapGesture:(id)sender;
 
 
 @end

@@ -26,6 +26,7 @@
 		E2A6DBC2158E1324005474AD /* DimensionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A6DBC1158E1324005474AD /* DimensionsTests.m */; };
 		E2A6DBDA158E2381005474AD /* HorizontalLine.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A6DBD9158E2381005474AD /* HorizontalLine.m */; };
 		E2A6DBDC158E23A6005474AD /* HorizontalLineView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2A6DBDB158E23A6005474AD /* HorizontalLineView.xib */; };
+		E2E3BF82159A3BB40087CCC6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E3BF81159A3BB40087CCC6 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		E2A6DBD8158E2381005474AD /* HorizontalLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HorizontalLine.h; sourceTree = "<group>"; };
 		E2A6DBD9158E2381005474AD /* HorizontalLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HorizontalLine.m; sourceTree = "<group>"; };
 		E2A6DBDB158E23A6005474AD /* HorizontalLineView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HorizontalLineView.xib; path = Views/HorizontalLineView.xib; sourceTree = "<group>"; };
+		E2E3BF81159A3BB40087CCC6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2E3BF82159A3BB40087CCC6 /* QuartzCore.framework in Frameworks */,
 				E2A6DB97158E1323005474AD /* UIKit.framework in Frameworks */,
 				E2A6DB99158E1323005474AD /* Foundation.framework in Frameworks */,
 				E2A6DB9B158E1323005474AD /* CoreGraphics.framework in Frameworks */,
@@ -114,6 +117,7 @@
 		E2A6DB87158E1323005474AD = {
 			isa = PBXGroup;
 			children = (
+				E2E3BF81159A3BB40087CCC6 /* QuartzCore.framework */,
 				E2A6DB9C158E1323005474AD /* Dimensions */,
 				E2A6DBBA158E1324005474AD /* DimensionsTests */,
 				E2A6DB95158E1323005474AD /* Frameworks */,
