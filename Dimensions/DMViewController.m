@@ -106,9 +106,6 @@
 	//[as showFromTabBar:self.tabBarController.tabBar]; // Show the ActionSheet
 }
 
-- (IBAction)takeAction:(id)sender {
-	[self showCaptureActionSheet];
-}
 
 - (void)showIU:(BOOL)show {
 	
@@ -283,7 +280,7 @@
 }
 
 - (IBAction)chooseButton:(id)sender {
-	[self takeAction:sender];
+	[self showCaptureActionSheet];
 }
 
 - (IBAction)clearLines:(id)sender {
