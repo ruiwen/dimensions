@@ -131,9 +131,11 @@
 	[self.imageView setImage:image];
 	
 	//Need to dismiss camera picker with NO animation to be able to segue to the next controller
-	[self dismissModalViewControllerAnimated:NO];
+	[self dismissModalViewControllerAnimated:YES];
 	//Need to save to local app a copy of the image.
 	//	[self performSegueWithIdentifier:@"FeaturedToCreateOwnPose" sender:self];
+	
+	[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
 	
 	// Hide the UI
 	[self showIU:NO];
