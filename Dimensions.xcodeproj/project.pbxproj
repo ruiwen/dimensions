@@ -135,7 +135,6 @@
 		E2A6DB87158E1323005474AD = {
 			isa = PBXGroup;
 			children = (
-				E2E3BF81159A3BB40087CCC6 /* QuartzCore.framework */,
 				E2A6DB9C158E1323005474AD /* Dimensions */,
 				E2A6DBBA158E1324005474AD /* DimensionsTests */,
 				E2A6DB95158E1323005474AD /* Frameworks */,
@@ -158,6 +157,7 @@
 				E2F4308B15A2209700B5ABF4 /* libz.dylib */,
 				E2F4308915A21FEA00B5ABF4 /* libsqlite3.0.dylib */,
 				E2F4308715A21FD100B5ABF4 /* CFNetwork.framework */,
+				E2E3BF81159A3BB40087CCC6 /* QuartzCore.framework */,
 				E2A6DB96158E1323005474AD /* UIKit.framework */,
 				E2A6DB98158E1323005474AD /* Foundation.framework */,
 				E2A6DB9A158E1323005474AD /* CoreGraphics.framework */,
