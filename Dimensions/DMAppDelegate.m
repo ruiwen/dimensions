@@ -19,6 +19,9 @@ static const NSInteger kGANDispatchPeriodSec = 10;
 {
     // Override point for customization after application launch.
  
+	// Initialise TestFlight
+	[TestFlight takeOff:@"13b673cbca5df487d1cbc58e75a1d7dd_MTA2MDkxMjAxMi0wNy0wMiAxMzozNDoyMS4wMzcxODY"];
+
 	// Initialise Google Analytics
 	[[GANTracker sharedTracker] startTrackerWithAccountID:@"UA-33090628-1"
 										   dispatchPeriod:kGANDispatchPeriodSec
@@ -45,6 +48,8 @@ static const NSInteger kGANDispatchPeriodSec = 10;
 		// Handler error
 	}
 	
+	// TF - Log unique ID
+	[TestFlight setDeviceIdentifier:[defaults objectForKey:@"appID"]];
 	
 	return YES;
 }
