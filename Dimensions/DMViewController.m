@@ -236,6 +236,14 @@
 		[self.lines addObject:self.verticalLine];
 		
 		//self.horizontalLine = nil;
+
+		// GA - Track adding of vertical line
+		NSError *error;
+		[[GANTracker sharedTracker] trackEvent:@"Line added"
+										action:@"Vertical line" 
+										 label:nil
+										 value:[self.lines count]
+									 withError:&error];
 		
 	}
 	else if (press.state == UIGestureRecognizerStateChanged) {
@@ -266,6 +274,14 @@
 		[self.lines addObject:self.horizontalLine];
 		
 		//self.horizontalLine = nil;
+		
+		// GA - Track adding of vertical line
+		NSError *error;
+		[[GANTracker sharedTracker] trackEvent:@"Line added"
+										action:@"Horizontal line" 
+										 label:nil
+										 value:[self.lines count]
+									 withError:&error];
 		
 	}
 	else if (press.state == UIGestureRecognizerStateChanged) {

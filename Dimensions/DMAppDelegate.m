@@ -8,6 +8,9 @@
 
 #import "DMAppDelegate.h"
 
+// Dispatch period in seconds
+static const NSInteger kGANDispatchPeriodSec = 10;
+
 @implementation DMAppDelegate
 
 @synthesize window = _window;
@@ -15,7 +18,35 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    return YES;
+ 
+	// Initialise Google Analytics
+	[[GANTracker sharedTracker] startTrackerWithAccountID:@"UA-33090628-1"
+										   dispatchPeriod:kGANDispatchPeriodSec
+												 delegate:nil];
+	
+	
+	// Set NSUserDefault with the unique UUID
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	if (![defaults objectForKey:@"appID"]) {
+		//If the app ID does not exist, create one and save to defaults
+		CFUUIDRef uuID = CFUUIDCreate(NULL);
+		CFStringRef idStringRef = CFUUIDCreateString(NULL, uuID);
+		// Cast to NSString to silence warning
+		NSString *idString = (__bridge NSString *)idStringRef;
+		//Set to NSUserDefault and synchronize
+		[defaults setObject:idString forKey:@"appID"];
+		[defaults synchronize];
+	}
+	
+	
+	// GA - Log unique ID
+	NSError *error;
+	if(![[GANTracker sharedTracker] setCustomVariableAtIndex:1 name:@"user" value:[defaults objectForKey:@"appID"] withError:&error]) {
+		// Handler error
+	}
+	
+	
+	return YES;
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
