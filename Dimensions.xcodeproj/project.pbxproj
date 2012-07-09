@@ -11,6 +11,7 @@
 		E22F54851596D77100EDE57A /* VerticalLineView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E22F54841596D77100EDE57A /* VerticalLineView.xib */; };
 		E22F54881596DAFE00EDE57A /* VerticalLine.m in Sources */ = {isa = PBXBuildFile; fileRef = E22F54871596DAFE00EDE57A /* VerticalLine.m */; };
 		E22F54A31598AE9900EDE57A /* DMLine.m in Sources */ = {isa = PBXBuildFile; fileRef = E22F54A21598AE9900EDE57A /* DMLine.m */; };
+		E237CAE115AAD26200AE807C /* dimensions@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E237CAE015AAD26200AE807C /* dimensions@2x.png */; };
 		E2A6DB97158E1323005474AD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2A6DB96158E1323005474AD /* UIKit.framework */; };
 		E2A6DB99158E1323005474AD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2A6DB98158E1323005474AD /* Foundation.framework */; };
 		E2A6DB9B158E1323005474AD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2A6DB9A158E1323005474AD /* CoreGraphics.framework */; };
@@ -27,6 +28,7 @@
 		E2A6DBDA158E2381005474AD /* HorizontalLine.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A6DBD9158E2381005474AD /* HorizontalLine.m */; };
 		E2A6DBDC158E23A6005474AD /* HorizontalLineView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2A6DBDB158E23A6005474AD /* HorizontalLineView.xib */; };
 		E2E3BF82159A3BB40087CCC6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E3BF81159A3BB40087CCC6 /* QuartzCore.framework */; };
+		E2EAA10015AAD3E900A1BBD5 /* dimensions.png in Resources */ = {isa = PBXBuildFile; fileRef = E2EAA0FF15AAD3E900A1BBD5 /* dimensions.png */; };
 		E2F4307F15A21CC000B5ABF4 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2F4307E15A21CC000B5ABF4 /* libGoogleAnalytics.a */; };
 		E2F4308615A21F0300B5ABF4 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2F4308415A21F0300B5ABF4 /* libTestFlight.a */; };
 		E2F4308815A21FD200B5ABF4 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2F4308715A21FD100B5ABF4 /* CFNetwork.framework */; };
@@ -52,6 +54,7 @@
 		E22F54871596DAFE00EDE57A /* VerticalLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerticalLine.m; sourceTree = "<group>"; };
 		E22F54A11598AE9900EDE57A /* DMLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMLine.h; sourceTree = "<group>"; };
 		E22F54A21598AE9900EDE57A /* DMLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMLine.m; sourceTree = "<group>"; };
+		E237CAE015AAD26200AE807C /* dimensions@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dimensions@2x.png"; sourceTree = "<group>"; };
 		E2A6DB92158E1323005474AD /* Dimensions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dimensions.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2A6DB96158E1323005474AD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E2A6DB98158E1323005474AD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -75,6 +78,7 @@
 		E2A6DBD9158E2381005474AD /* HorizontalLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HorizontalLine.m; sourceTree = "<group>"; };
 		E2A6DBDB158E23A6005474AD /* HorizontalLineView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HorizontalLineView.xib; path = Views/HorizontalLineView.xib; sourceTree = "<group>"; };
 		E2E3BF81159A3BB40087CCC6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		E2EAA0FF15AAD3E900A1BBD5 /* dimensions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dimensions.png; sourceTree = "<group>"; };
 		E2F4307D15A21CC000B5ABF4 /* GANTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GANTracker.h; sourceTree = "<group>"; };
 		E2F4307E15A21CC000B5ABF4 /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalytics.a; sourceTree = "<group>"; };
 		E2F4308415A21F0300B5ABF4 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
@@ -132,6 +136,15 @@
 			name = GestureRecognizers;
 			sourceTree = "<group>";
 		};
+		E284871915AA086000AD2C2A /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				E2EAA0FF15AAD3E900A1BBD5 /* dimensions.png */,
+				E237CAE015AAD26200AE807C /* dimensions@2x.png */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
 		E2A6DB87158E1323005474AD = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +182,7 @@
 		E2A6DB9C158E1323005474AD /* Dimensions */ = {
 			isa = PBXGroup;
 			children = (
+				E284871915AA086000AD2C2A /* Assets */,
 				E2A6DBD8158E2381005474AD /* HorizontalLine.h */,
 				E2A6DBD9158E2381005474AD /* HorizontalLine.m */,
 				E22F54861596DAFE00EDE57A /* VerticalLine.h */,
@@ -312,6 +326,8 @@
 				E2A6DBAA158E1324005474AD /* MainStoryboard.storyboard in Resources */,
 				E2A6DBDC158E23A6005474AD /* HorizontalLineView.xib in Resources */,
 				E22F54851596D77100EDE57A /* VerticalLineView.xib in Resources */,
+				E237CAE115AAD26200AE807C /* dimensions@2x.png in Resources */,
+				E2EAA10015AAD3E900A1BBD5 /* dimensions.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
