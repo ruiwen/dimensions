@@ -13,7 +13,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="o5i-eu-a1T" userLabel="imageView">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="instructions.png" id="o5i-eu-a1T" userLabel="imageView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -99,6 +99,9 @@
             <point key="canvasLocation" x="-185" y="-91"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="instructions.png" width="320" height="480"/>
+    </resources>
     <classes>
         <class className="DMLine" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DMLine.h"/>
