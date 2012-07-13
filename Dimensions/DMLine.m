@@ -8,6 +8,15 @@
 
 #import "DMLine.h"
 
+#define LINE_OFFSET_Y self.frame.size.height
+
+@interface DMLine ()
+
+- (void)updateLocationY:(CGPoint)point;
+- (void)updateLocationX:(CGPoint)point;
+
+@end
+
 @implementation DMLine
 
 @synthesize line;
@@ -26,21 +35,32 @@
 
 - (void)updateLocation:(CGPoint)point {
 	
-	CGRect frame = self.frame;
-
 	if(self.constraint == DMLineConstrainY) { // Constrain in the y-axis
-		frame.origin.y = point.y - frame.size.height;
-		[self.label setText:[NSString stringWithFormat:@"%3.0f", point.y]];
+		[self updateLocationY:point];
 	}
 	else if(self.constraint == DMLineConstrainX) { // Constrain in the x-axis
-		frame.origin.x = point.x;
-		[self.label setText:[NSString stringWithFormat:@"%3.0f", point.x]];
+		[self updateLocationX:point];
 	}
-	
-	[self setFrame:frame];	
-	
 }
 
+- (void)updateLocationY:(CGPoint)point {
+
+	CGRect frame = self.frame;
+	frame.origin.y = point.y - LINE_OFFSET_Y;
+	[self.label setText:[NSString stringWithFormat:@"%3.0f", point.y]];
+
+	[self setFrame:frame];
+}
+
+
+- (void)updateLocationX:(CGPoint)point {
+	
+	CGRect frame = self.frame;
+	frame.origin.x = point.x;
+	[self.label setText:[NSString stringWithFormat:@"%3.0f", point.x]];
+	
+	[self setFrame:frame];
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.

@@ -8,6 +8,13 @@
 
 #import "HorizontalLine.h"
 
+#define LINE_OFFSET_Y 25
+
+#define LABEL_Y_ORIG 0
+#define LABEL_Y_ALT 31
+
+#define LINE_Y_THRESHOLD 25.0
+
 @implementation HorizontalLine
 @synthesize line;
 @synthesize label;
@@ -30,6 +37,25 @@
 }
 */
 
+
+- (void)updateLocationY:(CGPoint)point {
+	
+	CGRect frame = self.frame;
+	CGRect labelFrame = self.label.frame;
+
+	if(point.y < LINE_Y_THRESHOLD) {		
+		labelFrame.origin.y = LABEL_Y_ALT;
+	}
+	else {
+		labelFrame.origin.y = LABEL_Y_ORIG;
+	}
+	self.label.frame = labelFrame;
+
+	frame.origin.y = point.y - LINE_OFFSET_Y;
+	
+	[self.label setText:[NSString stringWithFormat:@"%3.0f", point.y]];	
+	[self setFrame:frame];
+}
 
 //- (void)withGesture:(UIGestureRecognizer *)press {
 //
