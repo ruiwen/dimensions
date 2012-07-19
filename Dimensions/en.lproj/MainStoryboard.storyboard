@@ -106,8 +106,10 @@
         <class className="DMLine" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DMLine.h"/>
             <relationships>
+                <relationship kind="action" name="longPress:" candidateClass="UILongPressGestureRecognizer"/>
                 <relationship kind="outlet" name="label" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="line" candidateClass="UIView"/>
+                <relationship kind="outlet" name="longPress" candidateClass="UILongPressGestureRecognizer"/>
             </relationships>
         </class>
         <class className="DMViewController" superclassName="UIViewController">

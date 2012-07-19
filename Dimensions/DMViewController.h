@@ -12,7 +12,7 @@
 #import "RCDirectionalPanGestureRecognizer.h"
 
 
-@interface DMViewController : UIViewController <UIImagePickerControllerDelegate, UIActionSheetDelegate>
+@interface DMViewController : UIViewController <UIImagePickerControllerDelegate, UIActionSheetDelegate, UIGestureRecognizerDelegate>
 
 @property (strong, nonatomic) NSMutableArray *lines;
 @property (assign,nonatomic) IBOutlet HorizontalLine *horizontalLine;
@@ -33,5 +33,6 @@
 - (IBAction)clearLines:(id)sender;
 - (IBAction)tapGesture:(id)sender;
 
+- (void)receiveLineNotification:(NSNotification *)notification;
 
 @end

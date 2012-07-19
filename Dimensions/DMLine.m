@@ -21,16 +21,29 @@
 
 @synthesize line;
 @synthesize label;
+@synthesize longPress;
 
 @synthesize constraint = _constraint;
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
+- (id)initWithCoder:(NSCoder *)aDecoder {
+	
+	if(self = [super initWithCoder:aDecoder]) {
+
+		// Set up the gesture recognizer on init
+		[self setLongPress:[[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressAction:)]];
+		self.longPress.minimumPressDuration = 0.3;
+		
+		self.longPress.delegate = self; // Set to self, so we can override the default gestureRecognizer:shouldRecognizeSimultaneouslyWithGestureRecognizer:
+		
+		[self addGestureRecognizer:self.longPress];
+		
+	}
+	return self;
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+	
+	return YES;
 }
 
 - (void)updateLocation:(CGPoint)point {
@@ -70,5 +83,30 @@
     // Drawing code
 }
 */
+
+-(void)longPressAction:(UILongPressGestureRecognizer *)press {
+	NSLog(@"longPress");
+	
+	if(press.state == UIGestureRecognizerStateBegan) {
+		// Indicate that this Line is ready to be moved
+		[UIView animateWithDuration:0.2
+						 animations:^{
+							 self.line.backgroundColor = LINE_COLOUR_ALT;
+						 }];
+		
+		[[NSNotificationCenter defaultCenter] postNotificationName:@"LineActivated" object:self];
+
+	}
+	else if(press.state == UIGestureRecognizerStateEnded) {
+		// Indicate that this Line is now fixed
+		[UIView animateWithDuration:0.2
+						 animations:^{
+							 self.line.backgroundColor = LINE_COLOUR_ORIG;
+						 }];
+		
+		[[NSNotificationCenter defaultCenter] postNotificationName:@"LineDeactivated" object:self];
+			
+	}
+}
 
 @end

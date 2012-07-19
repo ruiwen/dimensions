@@ -61,6 +61,12 @@
 	} 
 }
 
+#pragma mark - UIGestureRecognizerDelegate methods
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+	
+	return YES; // Allow simultaneous gesture recognition
+}
+
 #pragma mark - Utility methods
 
 - (void)captureImageWithSource:(UIImagePickerControllerSourceType)source {
@@ -178,6 +184,11 @@
 	self.verticalPan.direction = RCPanGestureRecognizerVertical;
 	
 	self.lines = [[NSMutableArray alloc] init];
+	
+	// Register for NSNotifications
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveLineNotification:) name:@"LineActivated" object:nil];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveLineNotification:) name:@"LineDeactivated" object:nil];
 }
 
 - (void)viewDidUnload
@@ -228,9 +239,11 @@
 	if(press.state == UIGestureRecognizerStateBegan) {
 		NSLog(@"Coordinate X:%f, Y:%f", [press locationInView:self.view].x, [press locationInView:self.view].y);
 		
-		[[NSBundle mainBundle] loadNibNamed:@"VerticalLineView" owner:self options:nil];
+		if(!self.verticalLine) {
+			[[NSBundle mainBundle] loadNibNamed:@"VerticalLineView" owner:self options:nil];
+			[self.view addSubview:self.verticalLine]; // Add verticalLine view as subview first, so it can retrieve touch coordinates with respect to our main view
+		}
 		
-		[self.view addSubview:self.verticalLine]; // Add verticalLine view as subview first, so it can retrieve touch coordinates with respect to our main view
 		[self.verticalLine setConstraint:DMLineConstrainX];
 		[self.verticalLine updateLocation:[press locationInView:self.view]];
 		[self.lines addObject:self.verticalLine];
@@ -265,10 +278,12 @@
 	
 	if(press.state == UIGestureRecognizerStateBegan) {
 		NSLog(@"Coordinate X:%f, Y:%f", [press locationInView:self.view].x, [press locationInView:self.view].y);
+
+		if(!self.horizontalLine) {
+			[[NSBundle mainBundle] loadNibNamed:@"HorizontalLineView" owner:self options:nil];
+			[self.view addSubview:self.horizontalLine]; // Add horizontalLine view as subview first, so it can retrieve touch coordinates with respect to our main view
+		}
 		
-		[[NSBundle mainBundle] loadNibNamed:@"HorizontalLineView" owner:self options:nil];
-		
-		[self.view addSubview:self.horizontalLine]; // Add horizontalLine view as subview first, so it can retrieve touch coordinates with respect to our main view
 		[self.horizontalLine setConstraint:DMLineConstrainY];
 		[self.horizontalLine updateLocation:[press locationInView:self.view]];
 		[self.lines addObject:self.horizontalLine];
@@ -309,6 +324,28 @@
 - (IBAction)tapGesture:(id)sender {
 	
 	[self showIU:!self.uiShowing];
+}
+
+
+- (void)receiveLineNotification:(NSNotification *)notification {
+	
+	if(notification.name == @"LineActivated") {
+		if([notification.object isKindOfClass:[HorizontalLine class]]) {
+			self.horizontalLine = notification.object;
+		}
+		else if([notification.object isKindOfClass:[VerticalLine class]]) {
+			self.verticalLine = notification.object;
+		}
+		
+		[self.view bringSubviewToFront:notification.object];
+	}
+	
+	else if(notification.name == @"LineDeactivated") {
+	
+		// Nullify the lines
+		self.horizontalLine = nil;
+		self.verticalLine = nil;
+	}
 }
 
 @end
