@@ -15,8 +15,7 @@
 @interface DMViewController : UIViewController <UIImagePickerControllerDelegate, UIActionSheetDelegate, UIGestureRecognizerDelegate>
 
 @property (strong, nonatomic) NSMutableArray *lines;
-@property (assign,nonatomic) IBOutlet HorizontalLine *horizontalLine;
-@property (assign, nonatomic) IBOutlet VerticalLine *verticalLine;
+@property (assign, nonatomic) IBOutlet DMLine *line;
 @property (strong, nonatomic) IBOutlet UIButton *chooseButton;
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet UIView *controls;

@@ -34,8 +34,7 @@
 @synthesize uiShowing;
 
 @synthesize lines;
-@synthesize horizontalLine;
-@synthesize verticalLine;
+@synthesize line;
 @synthesize chooseButton;
 @synthesize imageView;
 @synthesize controls;
@@ -195,8 +194,7 @@
 {
 	[self setHorizontalPan:nil];
 	[self setVerticalPan:nil];
-	[self setHorizontalLine:nil];
-	[self setVerticalLine:nil];
+	[self setLine:nil];
 	[self setChooseButton:nil];
 	[self setImageView:nil];
 	[self setControls:nil];
@@ -236,17 +234,21 @@
 
 	NSLog(@"Horizontal Pan: %@", press);
 	
+	if(self.line && [self.line isKindOfClass:[HorizontalLine class]]) {
+		press.state = UIGestureRecognizerStateCancelled; // Abort the pan if the active line is horizontal. It should be vertical
+	}
+	
 	if(press.state == UIGestureRecognizerStateBegan) {
 		NSLog(@"Coordinate X:%f, Y:%f", [press locationInView:self.view].x, [press locationInView:self.view].y);
 		
-		if(!self.verticalLine) {
+		if(!self.line) {
 			[[NSBundle mainBundle] loadNibNamed:@"VerticalLineView" owner:self options:nil];
-			[self.view addSubview:self.verticalLine]; // Add verticalLine view as subview first, so it can retrieve touch coordinates with respect to our main view
+			[self.view addSubview:self.line]; // Add verticalLine view as subview first, so it can retrieve touch coordinates with respect to our main view
 		}
 		
-		[self.verticalLine setConstraint:DMLineConstrainX];
-		[self.verticalLine updateLocation:[press locationInView:self.view]];
-		[self.lines addObject:self.verticalLine];
+		[self.line setConstraint:DMLineConstrainX];
+		[self.line updateLocation:[press locationInView:self.view]];
+		[self.lines addObject:self.line];
 		
 		//self.horizontalLine = nil;
 
@@ -261,12 +263,12 @@
 	}
 	else if (press.state == UIGestureRecognizerStateChanged) {
 		
-		[self.verticalLine updateLocation:[press locationInView:self.view]];
+		[self.line updateLocation:[press locationInView:self.view]];
 	}
 	
 	else if(press.state == UIGestureRecognizerStateEnded) {
 		
-		self.verticalLine = nil; // Nullify
+		self.line = nil; // Nullify
 	}
 	
 }
@@ -276,17 +278,21 @@
 	
 	NSLog(@"Vertical Pan: %@", press);
 	
+	if(self.line && [self.line isKindOfClass:[VerticalLine class]]) {
+		press.state = UIGestureRecognizerStateCancelled; // Abort the pan if the active line is vertical. It should be horizontal
+	}
+	
 	if(press.state == UIGestureRecognizerStateBegan) {
 		NSLog(@"Coordinate X:%f, Y:%f", [press locationInView:self.view].x, [press locationInView:self.view].y);
 
-		if(!self.horizontalLine) {
+		if(!self.line) {
 			[[NSBundle mainBundle] loadNibNamed:@"HorizontalLineView" owner:self options:nil];
-			[self.view addSubview:self.horizontalLine]; // Add horizontalLine view as subview first, so it can retrieve touch coordinates with respect to our main view
+			[self.view addSubview:self.line]; // Add horizontalLine view as subview first, so it can retrieve touch coordinates with respect to our main view
 		}
 		
-		[self.horizontalLine setConstraint:DMLineConstrainY];
-		[self.horizontalLine updateLocation:[press locationInView:self.view]];
-		[self.lines addObject:self.horizontalLine];
+		[self.line setConstraint:DMLineConstrainY];
+		[self.line updateLocation:[press locationInView:self.view]];
+		[self.lines addObject:self.line];
 		
 		//self.horizontalLine = nil;
 		
@@ -301,12 +307,12 @@
 	}
 	else if (press.state == UIGestureRecognizerStateChanged) {
 		
-		[self.horizontalLine updateLocation:[press locationInView:self.view]];
+		[self.line updateLocation:[press locationInView:self.view]];
 	}
 	
 	else if(press.state == UIGestureRecognizerStateEnded) {
 	
-		self.horizontalLine = nil; // Nullify
+		self.line = nil; // Nullify
 	}
 }
 
@@ -330,21 +336,15 @@
 - (void)receiveLineNotification:(NSNotification *)notification {
 	
 	if(notification.name == @"LineActivated") {
-		if([notification.object isKindOfClass:[HorizontalLine class]]) {
-			self.horizontalLine = notification.object;
-		}
-		else if([notification.object isKindOfClass:[VerticalLine class]]) {
-			self.verticalLine = notification.object;
-		}
+		self.line = notification.object;
 		
 		[self.view bringSubviewToFront:notification.object];
 	}
 	
 	else if(notification.name == @"LineDeactivated") {
 	
-		// Nullify the lines
-		self.horizontalLine = nil;
-		self.verticalLine = nil;
+		// Nullify the line
+		self.line = nil;
 	}
 }
 

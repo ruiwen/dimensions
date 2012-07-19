@@ -85,7 +85,6 @@
 */
 
 -(void)longPressAction:(UILongPressGestureRecognizer *)press {
-	NSLog(@"longPress");
 	
 	if(press.state == UIGestureRecognizerStateBegan) {
 		// Indicate that this Line is ready to be moved
