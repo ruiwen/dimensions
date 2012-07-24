@@ -106,10 +106,8 @@
         <class className="DMLine" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DMLine.h"/>
             <relationships>
-                <relationship kind="action" name="longPress:" candidateClass="UILongPressGestureRecognizer"/>
                 <relationship kind="outlet" name="label" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="line" candidateClass="UIView"/>
-                <relationship kind="outlet" name="longPress" candidateClass="UILongPressGestureRecognizer"/>
             </relationships>
         </class>
         <class className="DMViewController" superclassName="UIViewController">
@@ -122,34 +120,19 @@
                 <relationship kind="action" name="verticalPan:" candidateClass="RCDirectionalPanGestureRecognizer"/>
                 <relationship kind="outlet" name="chooseButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="controls" candidateClass="UIView"/>
-                <relationship kind="outlet" name="horizontalLine" candidateClass="HorizontalLine"/>
                 <relationship kind="outlet" name="horizontalPan" candidateClass="RCDirectionalPanGestureRecognizer"/>
                 <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="line" candidateClass="DMLine"/>
                 <relationship kind="outlet" name="tapGesture" candidateClass="UITapGestureRecognizer"/>
-                <relationship kind="outlet" name="verticalLine" candidateClass="VerticalLine"/>
                 <relationship kind="outlet" name="verticalPan" candidateClass="RCDirectionalPanGestureRecognizer"/>
-            </relationships>
-        </class>
-        <class className="HorizontalLine" superclassName="DMLine">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HorizontalLine.h"/>
-            <relationships>
-                <relationship kind="outlet" name="label" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="line" candidateClass="UIView"/>
             </relationships>
         </class>
         <class className="RCDirectionalPanGestureRecognizer" superclassName="UIPanGestureRecognizer">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RCDirectionalPanGestureRecognizer.h"/>
         </class>
-        <class className="VerticalLine" superclassName="DMLine">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/VerticalLine.h"/>
-            <relationships>
-                <relationship kind="outlet" name="label" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="line" candidateClass="UIView"/>
-            </relationships>
-        </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <nil key="statusBar"/>
+        <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
